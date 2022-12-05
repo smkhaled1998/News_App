@@ -8,8 +8,9 @@ import 'package:news_app/layout/news_cubit.dart';
 
 import 'package:news_app/layout/news_layout.dart';
 import 'package:news_app/layout/news_states.dart';
-import 'package:news_app/shared/network/local/cashe_helper.dart';
-import 'package:news_app/shared/network/remote/dio-helper.dart';
+import 'package:news_app/shared/network/cashe_helper.dart';
+import 'package:news_app/shared/network/dio-helper.dart';
+
 import 'package:news_app/shared/styles.dart';
 
 import 'shared/bloc_observer.dart';
@@ -32,7 +33,9 @@ class Myapp extends StatelessWidget {
   Widget build(BuildContext context) // function return widget
   {
     return BlocProvider(
-      create: (context)=>NewsCubit()..getBusiness()..getScience()..getSport()..changeMode(fromShared: isDark),
+
+      create: (context)=>NewsCubit(),
+        // ..getBusiness('eg')..getScience('eg')..getSport('eg')..changeMode(fromShared: isDark),
       child: BlocConsumer<NewsCubit,NewsStates>(
         listener: (context,state){},
         builder: (context,state){

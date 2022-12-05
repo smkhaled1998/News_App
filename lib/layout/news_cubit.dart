@@ -1,7 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/layout/news_states.dart';
-import 'package:news_app/shared/network/local/cashe_helper.dart';
-import 'package:news_app/shared/network/remote/dio-helper.dart';
+import 'package:news_app/shared/network/cashe_helper.dart';
+import 'package:news_app/shared/network/dio-helper.dart';
+
 
 
 class NewsCubit extends Cubit<NewsStates>{
@@ -12,16 +13,19 @@ class NewsCubit extends Cubit<NewsStates>{
   int currentIndex =0;
   void changeBottomNavBar (int index){
     currentIndex=index;
+    if(currentIndex==0){getBusiness('eg');}
+    if(currentIndex==1){getScience('eg');}
+    if(currentIndex==2){getSport('eg');}
     emit(NewsChangeBottomBarState());
   }
 
    List <dynamic> business=[];
-  void getBusiness(){
+  void getBusiness(country){
     emit(NewsGetBusinessLoadingState());
     DioHelper.getData(
         url: 'v2/top-headlines',
         query: {
-          'country':'us',
+          'country':'eg',
           'category':'business',
           'apikey':'81d40cce422e4cb5b487aabd87c7ba41',
         }).then((value){
@@ -36,12 +40,12 @@ class NewsCubit extends Cubit<NewsStates>{
   }
 
   List <dynamic> sport=[];
-  void getSport(){
+  void getSport(country){
     emit(NewsGetSportLoadingState());
     DioHelper.getData(
         url: 'v2/top-headlines',
         query: {
-          'country':'us',
+          'country':'eg',
           'category':'sport',
           'apikey':'81d40cce422e4cb5b487aabd87c7ba41',
         }).then((value){
@@ -55,12 +59,12 @@ class NewsCubit extends Cubit<NewsStates>{
   }
 
   List <dynamic> science=[];
-  void getScience(){
+  void getScience(country){
     emit(NewsGetScienceLoadingState());
     DioHelper.getData(
         url: 'v2/top-headlines',
         query: {
-          'country':'us',
+          'country':'eg',
           'category':'science',
           'apikey':'81d40cce422e4cb5b487aabd87c7ba41',
         }).then((value){
