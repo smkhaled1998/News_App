@@ -27,7 +27,7 @@ class NewsCubit extends Cubit<NewsStates>{
         }).then((value){
           business=value.data['articles'];
           emit(NewsGetBusinessSuccessState());
-      print(value.data.toString());
+
     }).catchError((error){
       print('Error is ${error.toString()}');
       emit(NewsGetBusinessErrorState());
