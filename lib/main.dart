@@ -43,7 +43,7 @@ class Myapp extends StatelessWidget {
             darkTheme: darkMode,
             themeMode:cubit.isDark? ThemeMode.dark:ThemeMode.light,
             home:
-            Directionality(textDirection: TextDirection.ltr, child: NewsLayout()),
+            Directionality(textDirection: TextDirection.rtl, child: NewsLayout()),
           );
         },
       ),
