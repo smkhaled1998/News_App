@@ -3,8 +3,6 @@ import 'package:news_app/layout/news_states.dart';
 import 'package:news_app/shared/network/cashe_helper.dart';
 import 'package:news_app/shared/network/dio-helper.dart';
 
-
-
 class NewsCubit extends Cubit<NewsStates>{
   NewsCubit():super(NewsInitialState());
 
@@ -13,6 +11,7 @@ class NewsCubit extends Cubit<NewsStates>{
   int currentIndex =0;
   void changeBottomNavBar (int index){
     currentIndex=index;
+    print("current index is $currentIndex");
     if(currentIndex==0){getBusiness('eg');}
     if(currentIndex==1){getScience('eg');}
     if(currentIndex==2){getSport('eg');}

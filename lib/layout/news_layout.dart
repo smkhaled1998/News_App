@@ -38,9 +38,10 @@ class NewsLayout extends StatelessWidget {
                 BottomNavigationBarItem(icon: Icon(Icons.science),label: 'Science'),
                 BottomNavigationBarItem(icon: Icon(Icons.sports),label: 'Sport'),
               ],
-              currentIndex: cubit.currentIndex,
+              currentIndex : cubit.currentIndex,
               onTap: (index){
                 cubit.changeBottomNavBar(index);
+                print ("index is $index");
               },
             ),
 
